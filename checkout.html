@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout | Fragrance Essence</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">Fragrance Essence</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#perfumes">Perfumes</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="checkout.html" class="cart-icon">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count">0</span>
+    </a>
+  </header>
+
+  <!-- Checkout Section -->
+  <section class="checkout-section">
+    <div class="checkout-container">
+      <h2>Delivery Information</h2>
+      <form
+        action="https://formspree.io/f/xldjyrwk"
+        method="POST"
+        class="checkout-form"
+      >
+        <div class="form-group">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" name="Full Name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Mobile Phone</label>
+          <input type="tel" id="phone" name="Phone Number" required />
+        </div>
+
+        <div class="form-group">
+          <label for="address">Full Address</label>
+          <textarea
+            id="address"
+            name="Address"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="delivery-notes">Delivery Notes (Optional)</label>
+          <textarea
+            id="delivery-notes"
+            name="Delivery Notes"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="payment-method">Payment Method</label>
+          <select id="payment-method" name="Payment Method" required>
+            <option value="">Select payment method</option>
+            <option value="Cash on Delivery">Cash on Delivery</option>
+            <option value="Credit Card">Credit Card (Coming Soon)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="checkout-button">
+          Complete Order
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Load cart count from localStorage
+      const cartCount = document.querySelector(".cart-count");
+      if (localStorage.getItem("cartCount")) {
+        cartCount.textContent = localStorage.getItem("cartCount");
+      }
+
+      // Clear cart count after form submission (optional)
+      const form = document.querySelector(".checkout-form");
+      form.addEventListener("submit", function () {
+        localStorage.setItem("cartCount", "0");
+      });
+    });
+  </script>
+</body>
+</html>
